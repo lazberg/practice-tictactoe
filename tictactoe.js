@@ -1,26 +1,25 @@
-// Grid of 3x3
-// Player VS. Computer
-// START GAME
-// Randomly selects who starts first
 var gameRunning = false;
 var turnOrder = 0;
+var gameLength = 0;
 
 function StartGame(){
 	if (!gameRunning){
-		console.log("Game starting!");
+		//console.log("Game starting!");
 		ResetGame();
 		gameRunning=true;
+		gameLength=0;
 	}
 	else{
-		console.log("Game already running!");
+		//console.log("Game already running!");
 		return;
 	}
 }
 
 function ResetGame(){
 	for(var i = 0; i < 9; i++){
-		document.getElementsByClassName('all')[i].innerHTML = ""
+		document.getElementsByClassName('all')[i].innerHTML = "";
 	}
+	gameLength=0;
 }
 
 function SelectBox(box){
@@ -33,38 +32,49 @@ function SelectBox(box){
 	}
 }
 
+function CheckDraw(){
+	gameLength++;
+	console.log(gameLength);
+	if (gameLength==9){
+		gameRunning=false;
+		alert("Draw!");
+	}
+}
+	
 function playerX(box){
 	if (!gameRunning){
-		console.log("Game isn't running!");
+		//console.log("Game isn't running!");
 		return;
 	}
 	else {
 		if (document.getElementById(box).innerHTML == ""){
 			document.getElementById(box).innerHTML="x";
-			console.log("Taking spot!");
+			//console.log("Taking spot!");
 			CheckBoard(box, "x");
 			turnOrder=1;
+			CheckDraw();
 		}
 		else {
-			console.log("Spot already occupied!");
+			//console.log("Spot already occupied!");
 		}
 	}
 }
 
 function playerO(box){
 	if (!gameRunning){
-		console.log("Game isn't running!");
+		//console.log("Game isn't running!");
 		return;
 	}
 	else {
 		if (document.getElementById(box).innerHTML == ""){
 			document.getElementById(box).innerHTML="o";
-			console.log("Taking spot!");
+			//console.log("Taking spot!");
 			CheckBoard(box, "o");
 			turnOrder=0;
+			CheckDraw();
 		}
 		else {
-			console.log("Spot already occupied!");
+			//console.log("Spot already occupied!");
 		}
 	}
 }
@@ -103,11 +113,12 @@ function CheckRow(row, player){
 	var victoryCount = 0;
 	for(var i = 0; i < 3; i++){
 		if (document.getElementsByClassName(row)[i].innerHTML==player){
-			console.log(player+" is present on "+row+" ("+(victoryCount+1)+")");
+			//console.log(player+" is present on "+row+" ("+(victoryCount+1)+")");
 			victoryCount++;
 			if(victoryCount==3){
 				gameRunning=false;
 				alert("Player "+player+" has won!");
+				gameLength=0;
 			}
 		}
 		else{
