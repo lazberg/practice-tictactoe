@@ -1,0 +1,50 @@
+<DOCTYPE! html>
+<html>
+<head>
+	<script src="tictactoe.js"></script>
+	<title>Play Tic Tac Toe!</title>
+	<style>
+		#game {
+			background:#bbb;
+			width:500px;
+			height:500px;
+			margin:0 auto 0 auto;
+		}
+		#game td {
+			background:#fff;
+			width:150px;
+			height:150px;
+			text-align:center;
+			font-size:72px;
+			font-family:monospace;
+		}
+		th:hover {
+			background:#aaa;
+		}
+	</style>
+</head>
+<body>
+<table id="game">
+	<tr>
+	<th onclick="StartGame()">Start Game!</th>
+	<th onclick="ResetGame()">Reset Board</th>
+	<th></th>
+	</tr>
+	<tr>
+		<td id="1A" class="all top left desc" onclick="SelectBox('1A')"></td>
+		<td id="1B" class="all top center" onclick="SelectBox('1B')"></td>
+		<td id="1C" class="all top right asc" onclick="SelectBox('1C')"></td>
+	</tr>
+	<tr>
+		<td id="2A" class="all mid left" onclick="SelectBox('2A')"></td>
+		<td id="2B" class="all mid center desc asc" onclick="SelectBox('2B')"></td>
+		<td id="2C" class="all mid right" onclick="SelectBox('2C')"></td>
+	</tr>
+	<tr>
+		<td id="3A" class="all bot left asc" onclick="SelectBox('3A')"></td>
+		<td id="3B" class="all bot center" onclick="SelectBox('3B')"></td>
+		<td id="3C" class="all bot right desc" onclick="SelectBox('3C')"></td>
+	</tr>
+</table>
+</body>
+</html>
